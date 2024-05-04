@@ -1,22 +1,4 @@
-document.getElementById("getCoordinatesBtn").addEventListener("click", function() {
-    const city = document.getElementById("city").value;
 
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=YOUR_API_KEY`)
-        .then(response => response.json())
-        .then(data => {
-            const coordinates = `
-                <h2>Coordinates</h2>
-                <p>Latitude: ${data[0].lat}</p>
-                <p>Longitude: ${data[0].lon}</p>
-            `;
-            document.getElementById("coordinates").innerHTML = coordinates;
-
-            // Now, you can call the weather API using these coordinates if needed
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
 let weather = {
     "apikey": "2f0ad3953411bdfb6c2964fa864b71d0",
     fetchWeather : function (city) {
@@ -33,10 +15,14 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
+        const{ latitude } =data.latitude;
+        const{ longitude } =data.longitude;
         document.querySelector(".city").innerText = "Weather in " + name;
         document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
         document.querySelector(".description").innerText = description;
         document.querySelector(".temp").innerText = temp + "°C";
+        document.querySelector(".latitude").innerText = latitude + "°";
+        document.querySelector(".longitude").innerText = longitude + "°";
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind speed: " + speed + " km/h";
         document.querySelector(".weather").classList.remove("loading");
