@@ -1,7 +1,7 @@
 document.getElementById("getCoordinatesBtn").addEventListener("click", function() {
     const city = document.getElementById("city").value;
 
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={c1b6367ace6465caa2b93d96bbb7c0dd}')
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=c1b6367ace6465caa2b93d96bbb7c0dd`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('City not found');
