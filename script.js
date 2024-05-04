@@ -1,3 +1,22 @@
+document.getElementById("getCoordinatesBtn").addEventListener("click", function() {
+    const city = document.getElementById("city").value;
+
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=YOUR_API_KEY`)
+        .then(response => response.json())
+        .then(data => {
+            const coordinates = `
+                <h2>Coordinates</h2>
+                <p>Latitude: ${data[0].lat}</p>
+                <p>Longitude: ${data[0].lon}</p>
+            `;
+            document.getElementById("coordinates").innerHTML = coordinates;
+
+            // Now, you can call the weather API using these coordinates if needed
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+});
 let weather = {
     "apikey": "2f0ad3953411bdfb6c2964fa864b71d0",
     fetchWeather : function (city) {
