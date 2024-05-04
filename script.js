@@ -1,4 +1,3 @@
-
 let weather = {
     "apikey": "2f0ad3953411bdfb6c2964fa864b71d0",
     fetchWeather : function (city) {
@@ -15,14 +14,14 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
-        const{ latitude } =data.latitude;
-        const{ longitude } =data.longitude;
+        const{ lati } =data.lati;
+        const{ longi } =data.longi;
         document.querySelector(".city").innerText = "Weather in " + name;
         document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
         document.querySelector(".description").innerText = description;
         document.querySelector(".temp").innerText = temp + "°C";
-        document.querySelector(".latitude").innerText = latitude + "°";
-        document.querySelector(".longitude").innerText = longitude + "°";
+        document.querySelector(".lati").innerText = lati + "°";
+        document.querySelector(".longie").innerText = longi + "°";
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind speed: " + speed + " km/h";
         document.querySelector(".weather").classList.remove("loading");
